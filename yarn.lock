@@ -1012,7 +1012,7 @@
     "@babel/helper-create-regexp-features-plugin" "^7.18.6"
     "@babel/helper-plugin-utils" "^7.18.6"
 
-"@babel/preset-env@^7.14.8", "@babel/preset-env@^7.16.11":
+"@babel/preset-env@^7.16.11":
   "integrity" "sha512-1G0efQEWR1EHkKvKHqbG+IN/QdgwfByUpM5V5QroDzGV2t3S/WXNQd693cHiHTlCFMpr9B6FkPFXDA2lQcKoDg=="
   "resolved" "https://registry.npmjs.org/@babel/preset-env/-/preset-env-7.20.2.tgz"
   "version" "7.20.2"
@@ -1116,7 +1116,7 @@
     "@babel/plugin-transform-react-jsx-development" "^7.18.6"
     "@babel/plugin-transform-react-pure-annotations" "^7.18.6"
 
-"@babel/preset-typescript@^7.14.5", "@babel/preset-typescript@^7.16.7":
+"@babel/preset-typescript@^7.16.7":
   "integrity" "sha512-s9ik86kXBAnD760aybBucdpnLsAt0jK1xqJn2juOn9lkOvSHV60os5hxoVJsPzMQxvnUJFAlkont2DvvaYEBtQ=="
   "resolved" "https://registry.npmjs.org/@babel/preset-typescript/-/preset-typescript-7.18.6.tgz"
   "version" "7.18.6"
@@ -2450,27 +2450,7 @@
     "object-hash" "^2.2.0"
     "prettier" "^2.5.1"
 
-"@sanity-codegen/schema-codegen@^1.0.0-alpha.11":
-  "integrity" "sha512-GBgPZ1ERR2WUT9BbWhHCkHVijxFlDC4qxo6RkxvITWpHI18j3Q7TCzag8I1P9h3oR3r3FiucVZfvV5+IKfgx7A=="
-  "resolved" "https://registry.npmjs.org/@sanity-codegen/schema-codegen/-/schema-codegen-1.0.0-alpha.11.tgz"
-  "version" "1.0.0-alpha.11"
-  dependencies:
-    "@babel/core" "^7.14.8"
-    "@babel/plugin-proposal-class-properties" "^7.14.5"
-    "@babel/plugin-proposal-nullish-coalescing-operator" "^7.14.5"
-    "@babel/plugin-proposal-numeric-separator" "^7.14.5"
-    "@babel/plugin-proposal-optional-chaining" "^7.14.5"
-    "@babel/preset-env" "^7.14.8"
-    "@babel/preset-react" "^7.14.5"
-    "@babel/preset-typescript" "^7.14.5"
-    "@babel/register" "^7.14.5"
-    "@sanity-codegen/types" "1.0.0-alpha.11"
-    "babel-merge" "^3.0.0"
-    "babel-plugin-css-modules-transform" "^1.6.2"
-    "babel-plugin-module-resolver" "^4.1.0"
-    "prettier" "^2.2.1"
-
-"@sanity-codegen/schema-codegen@^1.0.0-alpha.26":
+"@sanity-codegen/schema-codegen@^1.0.0-alpha.11", "@sanity-codegen/schema-codegen@^1.0.0-alpha.26":
   "integrity" "sha512-OlI8IUkUTcM/JOEHGHLCi/ktq1cwZze0W17wQhaOfDu6v8SDz4534yPSLh5WYpTp69/F2xfQ/Vwhlaakg9YlWw=="
   "resolved" "https://registry.npmjs.org/@sanity-codegen/schema-codegen/-/schema-codegen-1.0.0-alpha.26.tgz"
   "version" "1.0.0-alpha.26"
@@ -2494,11 +2474,6 @@
   "integrity" "sha512-Wfzk1DE/LUbyQOIoRI7Q9ga1N++3RSPCRop68dePRCcCrzdDngmFj66nORPKZwh79Z99adeoSyIcsFaemupERw=="
   "resolved" "https://registry.npmjs.org/@sanity-codegen/types/-/types-1.0.0-alpha.25.tgz"
   "version" "1.0.0-alpha.25"
-
-"@sanity-codegen/types@1.0.0-alpha.11":
-  "integrity" "sha512-vKo0i+Iie9iU492qnBu++5cwXRsdAu9XRkEhEgVlPjXuJT8+pGyuQiN1Ot/oUmPuUVY+trd4o524lJ4kbAHjBA=="
-  "resolved" "https://registry.npmjs.org/@sanity-codegen/types/-/types-1.0.0-alpha.11.tgz"
-  "version" "1.0.0-alpha.11"
 
 "@sanity/block-content-to-hyperscript@^2.0.5":
   "integrity" "sha512-xT3iEmZkK0fvO5PDFpn9GMWGfvOopvbrRCBU48XxpFoTxRrfsHhxbRy8J0eND1HGXHUENkIKv5jbohtGd1MiVg=="
@@ -3970,9 +3945,9 @@
     "is-obj" "^1.0.0"
 
 "deep-object-diff@^1.1.0":
-  "integrity" "sha512-QkgBca0mL08P6HiOjoqvmm6xOAl2W6CT2+34Ljhg0OeFan8cwlcdq8jrLKsBBuUFAZLsN5b6y491KdKEoSo9lg=="
-  "resolved" "https://registry.npmjs.org/deep-object-diff/-/deep-object-diff-1.1.7.tgz"
-  "version" "1.1.7"
+  "integrity" "sha512-Rn+RuwkmkDwCi2/oXOFS9Gsr5lJZu/yTGpK7wAaAIE75CC+LCGEZHpY6VQJa/RoJcrmaA/docWJZvYohlNkWPA=="
+  "resolved" "https://registry.npmjs.org/deep-object-diff/-/deep-object-diff-1.1.9.tgz"
+  "version" "1.1.9"
 
 "deepmerge@^2.2.1":
   "integrity" "sha512-R9hc1Xa/NOBi9WRVUWg19rl1UB7Tt4kuPd+thNJgFZoxXsTz7ncaPaeIm+40oSGuP33DfMb4sZt1QIGiJzC4EA=="
@@ -5515,9 +5490,9 @@
     "object-assign" "^4.0.1"
 
 "loader-utils@^2.0.0":
-  "integrity" "sha512-TM57VeHptv569d/GKh6TAYdzKblwDNiumOdkFnejjD0XwTH87K90w3O7AiJRqdQoXygvi1VQTJTLGhJl7WqA7A=="
-  "resolved" "https://registry.npmjs.org/loader-utils/-/loader-utils-2.0.2.tgz"
-  "version" "2.0.2"
+  "integrity" "sha512-xXqpXoINfFhgua9xiqD8fPFHgkoq1mmmpE92WlDbm9rNRd/EbRb+Gqf908T2DMfuHjjJlksiK2RbHVOdD/MqSw=="
+  "resolved" "https://registry.npmjs.org/loader-utils/-/loader-utils-2.0.4.tgz"
+  "version" "2.0.4"
   dependencies:
     "big.js" "^5.2.2"
     "emojis-list" "^3.0.0"
