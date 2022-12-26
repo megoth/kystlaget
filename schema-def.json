@@ -598,6 +598,19 @@
                 "title": null,
                 "hasValidation": false,
                 "type": "RegistryReference",
+                "to": "group-component"
+              },
+              {
+                "codegen": {
+                  "required": false
+                },
+                "description": null,
+                "hidden": false,
+                "name": null,
+                "readOnly": false,
+                "title": null,
+                "hasValidation": false,
+                "type": "RegistryReference",
                 "to": "file-component"
               },
               {
@@ -694,7 +707,7 @@
         {
           "name": "date",
           "title": "Dato",
-          "description": "Nødvendig (for sortering)",
+          "description": "Nødvendig om albumet skal vises på historie-siden.",
           "hidden": false,
           "readOnly": false,
           "codegen": {
@@ -705,7 +718,7 @@
             "codegen": {
               "required": false
             },
-            "description": "Nødvendig (for sortering)",
+            "description": "Nødvendig om albumet skal vises på historie-siden.",
             "hidden": false,
             "name": "date",
             "readOnly": false,
@@ -790,6 +803,92 @@
             "type": "String",
             "list": null
           }
+        },
+        {
+          "name": "image",
+          "title": "Bilde",
+          "description": "",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": null,
+            "hidden": false,
+            "name": "image",
+            "readOnly": false,
+            "title": "Bilde",
+            "hasValidation": false,
+            "type": "Image",
+            "fields": null
+          }
+        }
+      ]
+    },
+    {
+      "codegen": {
+        "required": false
+      },
+      "description": null,
+      "hidden": false,
+      "readOnly": false,
+      "hasValidation": false,
+      "name": "association",
+      "title": "Organisasjon",
+      "type": "Document",
+      "fields": [
+        {
+          "name": "name",
+          "title": "Navn",
+          "description": "Nødvendig",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": "Nødvendig",
+            "hidden": false,
+            "name": "name",
+            "readOnly": false,
+            "title": "Navn",
+            "hasValidation": false,
+            "type": "String",
+            "list": null
+          }
+        },
+        {
+          "name": "logo",
+          "title": "Logo",
+          "description": "",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": null,
+            "hidden": false,
+            "name": "logo",
+            "readOnly": false,
+            "title": "Logo",
+            "hasValidation": false,
+            "type": "Image",
+            "fields": null
+          }
         }
       ]
     },
@@ -826,30 +925,6 @@
             "title": "Navn",
             "hasValidation": false,
             "type": "String",
-            "list": null
-          }
-        },
-        {
-          "name": "order",
-          "title": "Rekkefølge",
-          "description": "Nødvendig (0 og oppover)",
-          "hidden": false,
-          "readOnly": false,
-          "codegen": {
-            "required": false
-          },
-          "hasValidation": false,
-          "definition": {
-            "codegen": {
-              "required": false
-            },
-            "description": "Nødvendig (0 og oppover)",
-            "hidden": false,
-            "name": "order",
-            "readOnly": false,
-            "title": "Rekkefølge",
-            "hasValidation": false,
-            "type": "Number",
             "list": null
           }
         },
@@ -926,7 +1001,7 @@
                 "title": null,
                 "hasValidation": false,
                 "type": "RegistryReference",
-                "to": "person"
+                "to": "membership"
               }
             ],
             "list": null
@@ -1328,6 +1403,59 @@
       },
       "description": null,
       "hidden": false,
+      "name": "group-component",
+      "readOnly": false,
+      "title": "Gruppe",
+      "hasValidation": false,
+      "type": "Object",
+      "fields": [
+        {
+          "name": "group",
+          "title": "Gruppe",
+          "description": "Nødvendig",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": "Nødvendig",
+            "hidden": false,
+            "name": "group",
+            "readOnly": false,
+            "title": "Gruppe",
+            "hasValidation": false,
+            "type": "Reference",
+            "to": [
+              {
+                "codegen": {
+                  "required": false
+                },
+                "description": null,
+                "hidden": false,
+                "name": null,
+                "readOnly": false,
+                "title": null,
+                "hasValidation": false,
+                "to": "group",
+                "type": "RegistryReference"
+              }
+            ],
+            "weak": false
+          }
+        }
+      ]
+    },
+    {
+      "codegen": {
+        "required": false
+      },
+      "description": null,
+      "hidden": false,
       "name": "file-component",
       "readOnly": false,
       "title": "Fil",
@@ -1556,7 +1684,7 @@
       "fields": [
         {
           "name": "internalLink",
-          "title": "Internal Link",
+          "title": "Lenke til intern side",
           "description": "Select pages for navigation",
           "hidden": false,
           "readOnly": false,
@@ -1572,7 +1700,7 @@
             "hidden": false,
             "name": "internalLink",
             "readOnly": false,
-            "title": "Internal Link",
+            "title": "Lenke til intern side",
             "hasValidation": false,
             "type": "Reference",
             "to": [
@@ -1595,7 +1723,7 @@
         },
         {
           "name": "externalUrl",
-          "title": "External URL",
+          "title": "Lenke til ekstern side",
           "description": "",
           "hidden": false,
           "readOnly": false,
@@ -1611,7 +1739,7 @@
             "hidden": false,
             "name": "externalUrl",
             "readOnly": false,
-            "title": "External URL",
+            "title": "Lenke til ekstern side",
             "hasValidation": false,
             "type": "String",
             "list": null
@@ -1633,7 +1761,7 @@
       "fields": [
         {
           "name": "text",
-          "title": "Navigation Text",
+          "title": "Lenketekst",
           "description": "",
           "hidden": false,
           "readOnly": false,
@@ -1649,7 +1777,7 @@
             "hidden": false,
             "name": "text",
             "readOnly": false,
-            "title": "Navigation Text",
+            "title": "Lenketekst",
             "hasValidation": false,
             "type": "String",
             "list": null
@@ -1657,7 +1785,7 @@
         },
         {
           "name": "navigationItemUrl",
-          "title": "Navigation Item URL",
+          "title": "Hvor lenken skal gå",
           "description": "",
           "hidden": false,
           "readOnly": false,
@@ -1673,7 +1801,7 @@
             "hidden": false,
             "name": "navigationItemUrl",
             "readOnly": false,
-            "title": "Navigation Item URL",
+            "title": "Hvor lenken skal gå",
             "hasValidation": false,
             "type": "RegistryReference",
             "to": "link"
@@ -1695,7 +1823,7 @@
       "fields": [
         {
           "name": "items",
-          "title": "Navigation items",
+          "title": "Meny elementer",
           "description": "",
           "hidden": false,
           "readOnly": false,
@@ -1711,7 +1839,7 @@
             "hidden": false,
             "name": "items",
             "readOnly": false,
-            "title": "Navigation items",
+            "title": "Meny elementer",
             "hasValidation": false,
             "type": "Array",
             "of": [
@@ -1951,7 +2079,7 @@
         {
           "name": "person",
           "title": "Person",
-          "description": "Nødvendig",
+          "description": "",
           "hidden": false,
           "readOnly": false,
           "codegen": {
@@ -1962,7 +2090,7 @@
             "codegen": {
               "required": false
             },
-            "description": "Nødvendig",
+            "description": null,
             "hidden": false,
             "name": "person",
             "readOnly": false,
@@ -1988,8 +2116,8 @@
           }
         },
         {
-          "name": "title",
-          "title": "Tittel",
+          "name": "association",
+          "title": "Organisasjon",
           "description": "",
           "hidden": false,
           "readOnly": false,
@@ -2003,12 +2131,27 @@
             },
             "description": null,
             "hidden": false,
-            "name": "title",
+            "name": "association",
             "readOnly": false,
-            "title": "Tittel",
+            "title": "Organisasjon",
             "hasValidation": false,
-            "type": "String",
-            "list": null
+            "type": "Reference",
+            "to": [
+              {
+                "codegen": {
+                  "required": false
+                },
+                "description": null,
+                "hidden": false,
+                "name": null,
+                "readOnly": false,
+                "title": null,
+                "hasValidation": false,
+                "to": "association",
+                "type": "RegistryReference"
+              }
+            ],
+            "weak": false
           }
         },
         {

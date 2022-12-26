@@ -134,6 +134,7 @@ Om du ønsker å ha med teksten i tidslinjen, fyll ut informasjonen her
         | Sanity.Keyed<ButtonComponent>
         | Sanity.Keyed<ButtonsComponent>
         | Sanity.Keyed<DataComponent>
+        | Sanity.Keyed<GroupComponent>
         | Sanity.Keyed<FileComponent>
         | Sanity.Keyed<ImageComponent>
         | Sanity.Keyed<SubpagesComponent>
@@ -163,7 +164,7 @@ Nødvendig
 
       /**
        * Dato - `Date`
-Nødvendig (for sortering)
+Nødvendig om albumet skal vises på historie-siden.
        */
       date?: string;
 
@@ -185,6 +186,37 @@ Nødvendig (for sortering)
 Nødvendig
        */
       name?: string;
+
+      /**
+       * Bilde - `Image`
+       */
+      image?: {
+        asset: Sanity.Asset;
+        crop?: Sanity.ImageCrop;
+        hotspot?: Sanity.ImageHotspot;
+      };
+    }
+
+    /**
+     * Organisasjon
+     */
+    interface Association extends Sanity.Document {
+      _type: "association";
+
+      /**
+       * Navn - `String`
+Nødvendig
+       */
+      name?: string;
+
+      /**
+       * Logo - `Image`
+       */
+      logo?: {
+        asset: Sanity.Asset;
+        crop?: Sanity.ImageCrop;
+        hotspot?: Sanity.ImageHotspot;
+      };
     }
 
     /**
@@ -200,12 +232,6 @@ Nødvendig
       name?: string;
 
       /**
-       * Rekkefølge - `Number`
-Nødvendig (0 og oppover)
-       */
-      order?: number;
-
-      /**
        * Beskrivelse - `Array`
        */
       description?: Array<Sanity.Keyed<Sanity.Block>>;
@@ -213,7 +239,7 @@ Nødvendig (0 og oppover)
       /**
        * Medlemmer - `Array`
        */
-      members?: Array<Sanity.Keyed<Person>>;
+      members?: Array<Sanity.Keyed<Membership>>;
     }
 
     type BlockContent = Array<
@@ -300,6 +326,16 @@ Data må lenkes opp mot siden via kode
       type?: "albums" | "events" | "pageUpdates" | "subpages";
     };
 
+    type GroupComponent = {
+      _type: "group-component";
+
+      /**
+       * Gruppe - `Reference`
+Nødvendig
+       */
+      group?: Sanity.Reference<Group>;
+    };
+
     type FileComponent = {
       _type: "file-component";
 
@@ -353,13 +389,13 @@ Nødvendig
       _type: "link";
 
       /**
-       * Internal Link - `Reference`
+       * Lenke til intern side - `Reference`
 Select pages for navigation
        */
       internalLink?: Sanity.Reference<Page>;
 
       /**
-       * External URL - `String`
+       * Lenke til ekstern side - `String`
        */
       externalUrl?: string;
     };
@@ -368,12 +404,12 @@ Select pages for navigation
       _type: "navigationItem";
 
       /**
-       * Navigation Text - `String`
+       * Lenketekst - `String`
        */
       text?: string;
 
       /**
-       * Navigation Item URL - `RegistryReference`
+       * Hvor lenken skal gå - `RegistryReference`
        */
       navigationItemUrl?: Link;
     };
@@ -382,7 +418,7 @@ Select pages for navigation
       _type: "navigation";
 
       /**
-       * Navigation items - `Array`
+       * Meny elementer - `Array`
        */
       items?: Array<Sanity.Keyed<NavigationItem>>;
     };
@@ -438,14 +474,13 @@ Alternativt kan du bruke dato for rekkefølge
 
       /**
        * Person - `Reference`
-Nødvendig
        */
       person?: Sanity.Reference<Person>;
 
       /**
-       * Tittel - `String`
+       * Organisasjon - `Reference`
        */
-      title?: string;
+      association?: Sanity.Reference<Association>;
 
       /**
        * Notat - `String`
@@ -453,6 +488,13 @@ Nødvendig
       note?: string;
     };
 
-    type Document = Event | SiteSettings | Page | Album | Person | Group;
+    type Document =
+      | Event
+      | SiteSettings
+      | Page
+      | Album
+      | Person
+      | Association
+      | Group;
   }
 }

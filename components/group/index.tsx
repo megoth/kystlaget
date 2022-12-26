@@ -1,6 +1,5 @@
 import React from 'react';
-import { listStyle } from '../styles.css';
-import { GroupQuery } from '../../../lib/api/group';
+import { GroupQuery } from '../../lib/api/pages';
 import Member from './member';
 
 interface GroupConstellationGroupProps {
@@ -11,10 +10,10 @@ export default function Group({ group }: GroupConstellationGroupProps) {
   return (
     <>
       <h2 id={group._id}>{group.name}</h2>
-      <ul className={listStyle}>
-        {group.members.map((person) => (
-          <li key={person._id}>
-            <Member person={person} />
+      <ul>
+        {group.members.map((member) => (
+          <li key={member._key}>
+            <Member member={member} />
           </li>
         ))}
       </ul>

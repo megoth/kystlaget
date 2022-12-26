@@ -5,6 +5,7 @@ export const ComponentTypes = {
   BUTTON: "button-component",
   BUTTONS: "buttons-component",
   DATA: "data-component",
+  GROUP: "group-component",
   FILE: "file-component",
   IMAGE: "image-component",
   SUBPAGES: "subpages-component",

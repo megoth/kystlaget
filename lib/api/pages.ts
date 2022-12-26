@@ -1,23 +1,41 @@
 import client, { getClient } from "../sanity";
 import { Asset } from '@sanity/types/src/assets/types';
 
-export interface PageQuery extends Omit<Sanity.Schema.Page, "slug"> {
-  slug: string;
-}
-
-export interface SubpageQuery {
-  title: string;
-  order: number;
-  date: string;
-  slug: string;
+export async function getAllPagesWithSlug(): Promise<Array<{ slug: string, parentSlug: string | null }>> {
+  return await client.fetch(`*[_type == "page"]{ 'slug': slug.current, 'parentSlug': parent.page->slug.current }`);
 }
 
 export interface FileComponentQuery extends Omit<Sanity.Schema.FileComponent, "file"> {
-  file: Asset;
+  file: Asset
 }
 
-export async function getAllPagesWithSlug(): Promise<Array<{ slug: string, parentSlug: string | null }>> {
-  return await client.fetch(`*[_type == "page"]{ 'slug': slug.current, 'parentSlug': parent.page->slug.current }`);
+export interface MemberQuery extends Omit<Sanity.Schema.Membership, "association" | "person"> {
+  _key: string
+  association: Sanity.Schema.Association
+  person: Sanity.Schema.Person
+}
+
+export interface GroupQuery extends Omit<Sanity.Schema.Group, "members"> {
+  members: Array<MemberQuery>;
+}
+
+export interface GroupComponentQuery extends Omit<Sanity.Schema.GroupComponent, "group"> {
+  group: GroupQuery
+}
+
+export type ComponentQuery =
+  Sanity.Schema.ButtonComponent
+  | Sanity.Schema.ButtonsComponent
+  | Sanity.Schema.DataComponent
+  | FileComponentQuery
+  | GroupComponentQuery
+  | Sanity.Schema.ImageComponent
+  | Sanity.Schema.SubpagesComponent
+  | Sanity.Schema.TextComponent;
+
+export interface PageQuery extends Omit<Sanity.Schema.Page, "slug" | "components"> {
+  slug: string;
+  components: Array<ComponentQuery>;
 }
 
 export async function getPage(
@@ -42,11 +60,33 @@ export async function getPage(
         text,
         type,
         'file': file.asset->,
+        'group': group->{
+          _id,
+          _createdAt,
+          _rev,
+          _updatedAt,
+          _type,
+          name,
+          description,
+          'members': members[]{
+            _type,
+            'association': association->,
+            'person': person->,
+            note,
+          }
+        }
       },
     }`,
       { slug }
     )
     .then((res) => res?.[0] || null);
+}
+
+export interface SubpageQuery {
+  title: string;
+  order: number;
+  date: string;
+  slug: string;
 }
 
 export async function getSubpages(

@@ -7,6 +7,7 @@ import siteSettings from "./siteSettings";
 import page from "./page";
 import buttonComponent from "./buttonComponent";
 import buttonsComponent from "./buttonsComponent";
+import groupComponent from "./groupComponent";
 import imageComponent from "./imageComponent";
 import subpagesComponent from "./subpagesComponent";
 import textComponent from "./textComponent";
@@ -38,6 +39,7 @@ export const schemaTypes: Array<SchemaTypeDefinition> = [
   buttonComponent, // TODO fix preview
   buttonsComponent, // TODO fix preview
   dataComponent, // TODO fix preview
+  groupComponent,
   fileComponent, // TODO fix preview
   imageComponent,
   subpagesComponent,
