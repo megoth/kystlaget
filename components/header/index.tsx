@@ -5,7 +5,6 @@ import cn from "classnames";
 import Logo from "../logo";
 import Container from "../container";
 import HeaderMenu from './menu';
-import HeaderSearch from './search';
 
 interface Props {
   className?: string;
@@ -20,7 +19,6 @@ export default function Header({ className }: Props) {
         <Link href={"/"} className={headerChildStyle}>
           <Logo />
         </Link>
-        <HeaderSearch className={headerChildStyle} />
         <HeaderMenu containerRef={ref} className={headerChildStyle} />
       </header>
     </Container>
