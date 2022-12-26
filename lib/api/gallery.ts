@@ -1,32 +1,7 @@
 import client, { getClient } from "../sanity";
-import { SanityImageSource } from "@sanity/image-url/lib/types/types";
-
-export interface AlbumQuery
-  extends Omit<Sanity.Schema.Album, "slug" | "images"> {
-  slug: string;
-  mainImage: SanityImageSource;
-}
 
 export interface AlbumImageQuery extends Sanity.Schema.Photo {
   _key: string;
-}
-
-export interface AlbumWithImagesQuery
-  extends Omit<Sanity.Schema.Album, "slug" | "images"> {
-  slug: string;
-  images: Array<AlbumImageQuery>
-}
-
-export async function getAllAlbums(
-  preview: boolean
-): Promise<Array<AlbumQuery>> {
-  return await getClient(preview)
-    .fetch(`*[ _type == "album" ] | order(date desc){
-    name,
-    'slug': slug.current,
-    date,
-    'mainImage': images[0].image
-  }`);
 }
 
 export async function getAllAlbumsWithSlug(): Promise<Array<{ slug: string }>> {
@@ -43,11 +18,17 @@ export async function getAllAlbumsWithSlugAndImages(): Promise<Array<{
   }`);
 }
 
+export interface AlbumWithImagesQuery
+  extends Omit<Sanity.Schema.Album, "slug" | "images"> {
+  slug: string;
+  images: Array<AlbumImageQuery>
+}
+
 export async function getAlbumWithImages(
   slug: string | string[] | undefined,
   preview: boolean
 ): Promise<AlbumWithImagesQuery> {
-  const album = await getClient(preview)
+  return getClient(preview)
     .fetch(
       `*[ _type == "album" && slug.current == $slug ]{
       name,
@@ -57,5 +38,4 @@ export async function getAlbumWithImages(
       { slug }
     )
     .then((res) => res?.[0]);
-  return album;
 }

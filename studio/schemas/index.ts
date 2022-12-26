@@ -5,6 +5,7 @@ import source from "./source";
 import event from "./event";
 import siteSettings from "./siteSettings";
 import page from "./page";
+import albumsComponent from "./albumsComponent";
 import buttonComponent from "./buttonComponent";
 import buttonsComponent from "./buttonsComponent";
 import groupComponent from "./groupComponent";
@@ -31,11 +32,10 @@ export const schemaTypes: Array<SchemaTypeDefinition> = [
   // When added to this list, object types can be used as
   // { type: 'typename' } in other document schemas
   blockContent,
-  event, // TODO fix preview
-  source, // TODO fix preview
-  siteSettings,
   page, // TODO fix preview
+  siteSettings,
   pageEvent,
+  albumsComponent,
   buttonComponent, // TODO fix preview
   buttonsComponent, // TODO fix preview
   dataComponent, // TODO fix preview
@@ -50,10 +50,12 @@ export const schemaTypes: Array<SchemaTypeDefinition> = [
   album,
   photo,
   parentPage,
+  group, // TODO fix preview
   person,
   company,
-  group, // TODO fix preview
   membership, // TODO fix preview
+  event, // TODO fix preview
+  source, // TODO fix preview
 ];
 
 export default schemaTypes;

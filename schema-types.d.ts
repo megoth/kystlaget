@@ -3,6 +3,192 @@
 declare namespace Sanity {
   namespace Schema {
     /**
+     * Side
+     */
+    interface Page extends Sanity.Document {
+      _type: "page";
+
+      /**
+       * Navn - `String`
+Nødvendig
+       */
+      name?: string;
+
+      /**
+       * Tittel - `String`
+       */
+      title?: string;
+
+      /**
+       * Slug - `Slug`
+Nødvendig
+       */
+      slug?: {
+        _type: "slug";
+        current: string;
+      };
+
+      /**
+       * Foreldreside - `RegistryReference`
+       */
+      parent?: ParentPage;
+
+      /**
+       * Beskrivelse - `Text`
+       */
+      description?: string;
+
+      /**
+       * Presentasjon som hendelse - `RegistryReference`
+Om du ønsker å ha med teksten i tidslinjen, fyll ut informasjonen her
+       */
+      event?: PageEvent;
+
+      /**
+       * Innhold - `Array`
+       */
+      components?: Array<
+        | Sanity.Keyed<TextComponent>
+        | Sanity.Keyed<ImageComponent>
+        | Sanity.Keyed<AlbumsComponent>
+        | Sanity.Keyed<GroupComponent>
+        | Sanity.Keyed<FileComponent>
+        | Sanity.Keyed<SubpagesComponent>
+        | Sanity.Keyed<ButtonComponent>
+        | Sanity.Keyed<ButtonsComponent>
+        | Sanity.Keyed<DataComponent>
+      >;
+    }
+
+    /**
+     * Site Settings
+     */
+    interface SiteSettings extends Sanity.Document {
+      _type: "siteSettings";
+
+      /**
+       * Sidens tittel - `String`
+       */
+      title?: string;
+
+      /**
+       * Beskrivelse av siden - `Text`
+       */
+      description?: string;
+
+      /**
+       * Hovedmeny - `RegistryReference`
+       */
+      mainNav?: Navigation;
+
+      /**
+       * Tekst i foten - `Array`
+       */
+      footer?: Array<Sanity.Keyed<Sanity.Block>>;
+    }
+
+    /**
+     * Album
+     */
+    interface Album extends Sanity.Document {
+      _type: "album";
+
+      /**
+       * Navn - `String`
+Nødvendig
+       */
+      name?: string;
+
+      /**
+       * Slug - `Slug`
+Nødvendig
+       */
+      slug?: {
+        _type: "slug";
+        current: string;
+      };
+
+      /**
+       * Dato - `Date`
+Nødvendig om albumet skal vises på historie-siden.
+       */
+      date?: string;
+
+      /**
+       * Bilder - `Array`
+Øverste bildet vil bli thumbnail for album
+       */
+      images?: Array<Sanity.Keyed<Photo>>;
+    }
+
+    /**
+     * Gruppe
+     */
+    interface Group extends Sanity.Document {
+      _type: "group";
+
+      /**
+       * Navn - `String`
+Nødvendig
+       */
+      name?: string;
+
+      /**
+       * Beskrivelse - `Array`
+       */
+      description?: Array<Sanity.Keyed<Sanity.Block>>;
+
+      /**
+       * Medlemmer - `Array`
+       */
+      members?: Array<Sanity.Keyed<Membership>>;
+    }
+
+    /**
+     * Person
+     */
+    interface Person extends Sanity.Document {
+      _type: "person";
+
+      /**
+       * Navn - `String`
+Nødvendig
+       */
+      name?: string;
+
+      /**
+       * Bilde - `Image`
+       */
+      image?: {
+        asset: Sanity.Asset;
+        crop?: Sanity.ImageCrop;
+        hotspot?: Sanity.ImageHotspot;
+      };
+    }
+
+    /**
+     * Organisasjon
+     */
+    interface Association extends Sanity.Document {
+      _type: "association";
+
+      /**
+       * Navn - `String`
+Nødvendig
+       */
+      name?: string;
+
+      /**
+       * Logo - `Image`
+       */
+      logo?: {
+        asset: Sanity.Asset;
+        crop?: Sanity.ImageCrop;
+        hotspot?: Sanity.ImageHotspot;
+      };
+    }
+
+    /**
      * Historie
      */
     interface Event extends Sanity.Document {
@@ -57,191 +243,6 @@ Helst en eller flere
       sources?: Array<Sanity.Keyed<Source>>;
     }
 
-    /**
-     * Site Settings
-     */
-    interface SiteSettings extends Sanity.Document {
-      _type: "siteSettings";
-
-      /**
-       * Sidens tittel - `String`
-       */
-      title?: string;
-
-      /**
-       * Beskrivelse av siden - `Text`
-       */
-      description?: string;
-
-      /**
-       * Hovedmeny - `RegistryReference`
-       */
-      mainNav?: Navigation;
-
-      /**
-       * Tekst i foten - `Array`
-       */
-      footer?: Array<Sanity.Keyed<Sanity.Block>>;
-    }
-
-    /**
-     * Side
-     */
-    interface Page extends Sanity.Document {
-      _type: "page";
-
-      /**
-       * Navn - `String`
-Nødvendig
-       */
-      name?: string;
-
-      /**
-       * Tittel - `String`
-       */
-      title?: string;
-
-      /**
-       * Slug - `Slug`
-Nødvendig
-       */
-      slug?: {
-        _type: "slug";
-        current: string;
-      };
-
-      /**
-       * Foreldreside - `RegistryReference`
-       */
-      parent?: ParentPage;
-
-      /**
-       * Beskrivelse - `Text`
-       */
-      description?: string;
-
-      /**
-       * Presentasjon som hendelse - `RegistryReference`
-Om du ønsker å ha med teksten i tidslinjen, fyll ut informasjonen her
-       */
-      event?: PageEvent;
-
-      /**
-       * Innhold - `Array`
-       */
-      components?: Array<
-        | Sanity.Keyed<TextComponent>
-        | Sanity.Keyed<ButtonComponent>
-        | Sanity.Keyed<ButtonsComponent>
-        | Sanity.Keyed<DataComponent>
-        | Sanity.Keyed<GroupComponent>
-        | Sanity.Keyed<FileComponent>
-        | Sanity.Keyed<ImageComponent>
-        | Sanity.Keyed<SubpagesComponent>
-      >;
-    }
-
-    /**
-     * Album
-     */
-    interface Album extends Sanity.Document {
-      _type: "album";
-
-      /**
-       * Navn - `String`
-Nødvendig
-       */
-      name?: string;
-
-      /**
-       * Slug - `Slug`
-Nødvendig
-       */
-      slug?: {
-        _type: "slug";
-        current: string;
-      };
-
-      /**
-       * Dato - `Date`
-Nødvendig om albumet skal vises på historie-siden.
-       */
-      date?: string;
-
-      /**
-       * Bilder - `Array`
-Øverste bildet vil bli thumbnail for album
-       */
-      images?: Array<Sanity.Keyed<Photo>>;
-    }
-
-    /**
-     * Person
-     */
-    interface Person extends Sanity.Document {
-      _type: "person";
-
-      /**
-       * Navn - `String`
-Nødvendig
-       */
-      name?: string;
-
-      /**
-       * Bilde - `Image`
-       */
-      image?: {
-        asset: Sanity.Asset;
-        crop?: Sanity.ImageCrop;
-        hotspot?: Sanity.ImageHotspot;
-      };
-    }
-
-    /**
-     * Organisasjon
-     */
-    interface Association extends Sanity.Document {
-      _type: "association";
-
-      /**
-       * Navn - `String`
-Nødvendig
-       */
-      name?: string;
-
-      /**
-       * Logo - `Image`
-       */
-      logo?: {
-        asset: Sanity.Asset;
-        crop?: Sanity.ImageCrop;
-        hotspot?: Sanity.ImageHotspot;
-      };
-    }
-
-    /**
-     * Gruppe
-     */
-    interface Group extends Sanity.Document {
-      _type: "group";
-
-      /**
-       * Navn - `String`
-Nødvendig
-       */
-      name?: string;
-
-      /**
-       * Beskrivelse - `Array`
-       */
-      description?: Array<Sanity.Keyed<Sanity.Block>>;
-
-      /**
-       * Medlemmer - `Array`
-       */
-      members?: Array<Sanity.Keyed<Membership>>;
-    }
-
     type BlockContent = Array<
       | Sanity.Keyed<Sanity.Block>
       | Sanity.Keyed<{
@@ -250,21 +251,6 @@ Nødvendig
           hotspot?: Sanity.ImageHotspot;
         }>
     >;
-
-    type Source = {
-      _type: "source";
-
-      /**
-       * Navn - `String`
-Nødvendig
-       */
-      text?: string;
-
-      /**
-       * Lenke - `Url`
-       */
-      url?: string;
-    };
 
     type PageEvent = {
       _type: "pageEvent";
@@ -285,6 +271,15 @@ Nødvendig om teksten skal vises i tidslinjen.
        * Stor hendelse - `Boolean`
        */
       major?: boolean;
+    };
+
+    type AlbumsComponent = {
+      _type: "albums-component";
+
+      /**
+       * Album - `Array`
+       */
+      albums?: Array<Sanity.KeyedReference<Album>>;
     };
 
     type ButtonComponent = {
@@ -488,13 +483,28 @@ Alternativt kan du bruke dato for rekkefølge
       note?: string;
     };
 
+    type Source = {
+      _type: "source";
+
+      /**
+       * Navn - `String`
+Nødvendig
+       */
+      text?: string;
+
+      /**
+       * Lenke - `Url`
+       */
+      url?: string;
+    };
+
     type Document =
-      | Event
-      | SiteSettings
       | Page
+      | SiteSettings
       | Album
+      | Group
       | Person
       | Association
-      | Group;
+      | Event;
   }
 }

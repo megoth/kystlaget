@@ -1,7 +1,7 @@
 import React, { MouseEventHandler, ReactNode } from "react";
 import NextLink from "next/link";
-import { LinkQuery } from "../../lib/api/link";
 import { LinkProps } from "next/dist/client/link";
+import { LinkQuery } from '../../lib/api/site-settings';
 
 interface Props extends LinkQuery, Omit<LinkProps, "href"> {
   children?: ReactNode;

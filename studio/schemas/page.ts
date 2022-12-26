@@ -1,14 +1,16 @@
 import { RiPagesLine } from "react-icons/ri";
 
+// The order of these components reflect the order presented in Sanity Studio
 export const ComponentTypes = {
   TEXT: "text-component",
+  IMAGE: "image-component",
+  ALBUMS: "albums-component",
+  GROUP: "group-component",
+  FILE: "file-component",
+  SUBPAGES: "subpages-component",
   BUTTON: "button-component",
   BUTTONS: "buttons-component",
   DATA: "data-component",
-  GROUP: "group-component",
-  FILE: "file-component",
-  IMAGE: "image-component",
-  SUBPAGES: "subpages-component",
 }
 
 export default {

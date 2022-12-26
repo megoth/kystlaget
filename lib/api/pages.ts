@@ -5,6 +5,10 @@ export async function getAllPagesWithSlug(): Promise<Array<{ slug: string, paren
   return await client.fetch(`*[_type == "page"]{ 'slug': slug.current, 'parentSlug': parent.page->slug.current }`);
 }
 
+export interface AlbumsComponentQuery extends Omit<Sanity.Schema.AlbumsComponent, "albums"> {
+  albums: Array<Sanity.Schema.Album>
+}
+
 export interface FileComponentQuery extends Omit<Sanity.Schema.FileComponent, "file"> {
   file: Asset
 }
@@ -24,7 +28,8 @@ export interface GroupComponentQuery extends Omit<Sanity.Schema.GroupComponent, 
 }
 
 export type ComponentQuery =
-  Sanity.Schema.ButtonComponent
+  AlbumsComponentQuery
+  | Sanity.Schema.ButtonComponent
   | Sanity.Schema.ButtonsComponent
   | Sanity.Schema.DataComponent
   | FileComponentQuery
@@ -73,8 +78,9 @@ export async function getPage(
             'association': association->,
             'person': person->,
             note,
-          }
-        }
+          },
+        },
+        'albums': albums[]->
       },
     }`,
       { slug }

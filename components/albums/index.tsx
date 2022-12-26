@@ -1,34 +1,30 @@
 import React from "react";
-import { AlbumQuery } from "../../lib/api/gallery";
 import { imageBuilder } from "../../lib/sanity";
-import Container from "../container";
 import { imageStyle, linkStyle, listStyle } from "./styles.css";
 import Link from "../link";
 import { asThumbnail } from '../../lib/images';
 import { PAGE_SLUGS } from '../../lib/constants';
 
 interface Props {
-  albums: Array<AlbumQuery>;
+  albums: Array<Sanity.Schema.Album>;
 }
 
 export default function Albums({ albums }: Props) {
   return (
-    <Container>
-      <ul className={listStyle}>
-        {albums
-          .filter((album) => !!album.mainImage)
-          .map(({ slug, mainImage, name }) => (
-            <li key={slug}>
-              <Link
-                href={`/${PAGE_SLUGS.GALLERY}/${slug}`}
-                className={linkStyle}
-              >
-                <img className={imageStyle} src={asThumbnail(imageBuilder(mainImage), 575).url()} />
-                <div>{name}</div>
-              </Link>
-            </li>
-          ))}
-      </ul>
-    </Container>
+    <ul className={listStyle}>
+      {albums
+        .filter((album) => !!album.images[0])
+        .map(({ _id, slug, name, images }) => (
+          <li key={_id}>
+            <Link
+              href={`/${PAGE_SLUGS.GALLERY}/${slug.current}`}
+              className={linkStyle}
+            >
+              <img className={imageStyle} src={asThumbnail(imageBuilder(images[0].image), 575).url()}/>
+              <div>{name}</div>
+            </Link>
+          </li>
+        ))}
+    </ul>
   );
 }

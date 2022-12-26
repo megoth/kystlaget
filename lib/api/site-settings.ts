@@ -1,8 +1,13 @@
 import { getClient } from "../sanity";
-import { LinkQuery } from "./link";
 
 export interface SiteSettingsPage {
   siteSettings?: SiteSettingsQuery;
+}
+
+export interface LinkQuery {
+  text?: string;
+  slug?: string;
+  url?: string;
 }
 
 export interface SiteSettingsQuery

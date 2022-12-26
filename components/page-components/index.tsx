@@ -1,5 +1,5 @@
 import React from "react";
-import { FileComponentQuery, GroupComponentQuery, PageQuery } from "../../lib/api/pages";
+import { AlbumsComponentQuery, FileComponentQuery, GroupComponentQuery, PageQuery } from "../../lib/api/pages";
 import TextComponent from "../text-component";
 import ButtonComponent from "../button-component";
 import ButtonsComponent from "../buttons-component";
@@ -11,6 +11,7 @@ import SubpagesComponent from '../subpages';
 import PhotoComponent from '../photo-component';
 import FileComponent from '../file-component';
 import GroupComponent from '../group-component';
+import AlbumsComponent from '../albums-component';
 
 interface Props extends DataModules {
   page?: Partial<PageQuery>;
@@ -29,6 +30,14 @@ export default function PageComponents({ page, ...data }: Props) {
       {page.components?.map((component, index) => {
         const key = `page-component-${index}-${component._type}`;
         switch (component._type) {
+          case ComponentTypes.ALBUMS:
+            return (
+              <Container key={key}>
+                <AlbumsComponent
+                  component={component as AlbumsComponentQuery}
+                  componentIndex={index}/>
+              </Container>
+            );
           case ComponentTypes.BUTTON:
             return (
               <Container key={key}>

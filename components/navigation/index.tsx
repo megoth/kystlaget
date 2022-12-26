@@ -1,8 +1,8 @@
 import React from "react";
 import Link from "../link";
-import { LinkQuery } from "../../lib/api/link";
 import { navigationStyle } from "./styles.css";
 import cn from "classnames";
+import { LinkQuery } from '../../lib/api/site-settings';
 
 interface Props {
   navItems?: Array<LinkQuery>;
