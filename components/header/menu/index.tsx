@@ -2,9 +2,9 @@ import React, { MutableRefObject, useContext, useEffect } from 'react';
 import { headerHeight } from '../styles.css';
 import HeaderMenuButton from './button';
 import NavigationContext from '../../../contexts/navigationContext';
-import { translations } from '../../../lib/translations';
 import { triggerStyle, triggerTextStyle } from './styles.css';
 import clsx from 'clsx';
+import { TRANSLATIONS } from '../../../lib/constants';
 
 export interface MenuProps {
   containerRef: MutableRefObject<HTMLDivElement>;
@@ -35,7 +35,7 @@ export default function HeaderMenu({ containerRef, className }: MenuProps) {
       onClick={() => setOpen(!isOpen)}
       aria-expanded={isOpen}
     >
-      <span className={triggerTextStyle}>{translations.MENU}</span>
+      <span className={triggerTextStyle}>{TRANSLATIONS.MENU}</span>
       <HeaderMenuButton open={isOpen} />
     </button>
   )

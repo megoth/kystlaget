@@ -4,7 +4,7 @@ import { getSiteSettings, SiteSettingsPage } from "../../lib/api/site-settings";
 import { getPage, PageQuery } from "../../lib/api/pages";
 import { AlbumQuery, getAllAlbums } from "../../lib/api/gallery";
 import Albums from '../../components/albums';
-import { pageSlugs } from '../../lib/pages';
+import { PAGE_SLUGS } from '../../lib/constants';
 
 interface Props extends SiteSettingsPage {
   albums?: Array<AlbumQuery>;
@@ -23,7 +23,7 @@ export async function getStaticProps({ preview = false }) {
   const [albums, siteSettings, page] = await Promise.all([
     getAllAlbums(preview),
     getSiteSettings(preview),
-    getPage(pageSlugs.GALLERY, preview),
+    getPage(PAGE_SLUGS.GALLERY, preview),
   ]);
   return {
     props: { albums, siteSettings, page },

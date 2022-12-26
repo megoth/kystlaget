@@ -14,8 +14,8 @@ import {
 } from './styles.css';
 import clsx from 'clsx';
 import { asFullSize, asThumbnail } from '../../lib/images';
-import { pageSlugs } from '../../lib/pages';
 import DownloadButton from '../download-button';
+import { PAGE_SLUGS } from '../../lib/constants';
 
 interface AlbumImageProps {
   album: AlbumWithImagesQuery;
@@ -71,5 +71,5 @@ export default function AlbumImage({ album, photo }: AlbumImageProps) {
 }
 
 function getPhotoUrl(album: AlbumWithImagesQuery, photo: AlbumImageQuery): string {
-  return `/${pageSlugs.GALLERY}/${album.slug}/${photo._key}#content`
+  return `/${PAGE_SLUGS.GALLERY}/${album.slug}/${photo._key}#content`
 }

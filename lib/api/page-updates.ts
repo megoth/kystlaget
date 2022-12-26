@@ -1,5 +1,5 @@
 import { getClient } from "../sanity";
-import { pageSlugs } from '../pages';
+import { PAGE_SLUGS } from '../constants';
 
 export interface PageUpdateQuery extends Sanity.Document {
   created: string;
@@ -23,7 +23,7 @@ export async function getAlbumUpdates(
       albums.map((album) => ({
         ...album,
         description: `Nytt album`,
-        url: `/${pageSlugs.GALLERY}/${album.slug}`,
+        url: `/${PAGE_SLUGS.GALLERY}/${album.slug}`,
       }))
     );
 }
@@ -43,7 +43,7 @@ export async function getEventUpdates(
       events.map((event) => ({
         ...event,
         description: `Ny hendelse publisert`,
-        url: `/${pageSlugs.HISTORY}/${event.slug}`,
+        url: `/${PAGE_SLUGS.HISTORY}/${event.slug}`,
       }))
     );
 }

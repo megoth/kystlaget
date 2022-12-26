@@ -23,11 +23,6 @@ export default function NavigationModal({ siteSettings }: Props) {
           type={"main-menu"}
           ariaLabel="Hovedmeny"
         />
-        <Navigation
-          navItems={siteSettings?.subNavItems}
-          type={"sub-menu"}
-          ariaLabel="Undermeny"
-        />
       </div>
     </div>
   );

@@ -5,7 +5,7 @@ import { imageBuilder } from "../../lib/sanity";
 import { imageStyle, listStyle } from "./styles.css";
 import Link from "../link";
 import { asThumbnail } from '../../lib/images';
-import { pageSlugs } from '../../lib/pages';
+import { PAGE_SLUGS } from '../../lib/constants';
 
 interface Props {
   album: AlbumWithImagesQuery;
@@ -17,7 +17,7 @@ export default function Album({ album }: Props) {
       <ul className={listStyle}>
         {album.images?.map((photo, index) => (
           <li key={`${album.slug}-${index}`}>
-            <Link href={`/${pageSlugs.GALLERY}/${album.slug}/${photo._key}#content`}>
+            <Link href={`/${PAGE_SLUGS.GALLERY}/${album.slug}/${photo._key}#content`}>
               <img
                 className={imageStyle}
                 src={asThumbnail(imageBuilder(photo.image), 575).url()}

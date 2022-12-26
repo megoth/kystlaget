@@ -8,7 +8,6 @@ export interface SiteSettingsPage {
 export interface SiteSettingsQuery
   extends Omit<Sanity.Schema.SiteSettings, "mainNav" | "subNav"> {
   mainNavItems: Array<LinkQuery>;
-  subNavItems: Array<LinkQuery>;
 }
 
 export async function getSiteSettings(
@@ -16,15 +15,10 @@ export async function getSiteSettings(
 ): Promise<SiteSettingsQuery | null> {
   return await getClient(preview)
     .fetch(
-      `*[ _id == "siteSettings" ]{
+      `*[ _type == "siteSettings" ]{
     title,
     description,
-    "mainNavItems": mainNav -> items[]{
-      text,
-      "slug": navigationItemUrl.internalLink -> slug.current,
-      "url": navigationItemUrl.externalUrl
-    },
-    "subNavItems": subNav -> items[]{
+    "mainNavItems": mainNav.items[]{
       text,
       "slug": navigationItemUrl.internalLink -> slug.current,
       "url": navigationItemUrl.externalUrl

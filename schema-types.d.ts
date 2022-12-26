@@ -54,25 +54,7 @@ Nødvendig
        * Kilder - `Array`
 Helst en eller flere
        */
-      sources?: Array<Sanity.KeyedReference<Source>>;
-    }
-
-    /**
-     * Kilde
-     */
-    interface Source extends Sanity.Document {
-      _type: "source";
-
-      /**
-       * Navn - `String`
-Nødvendig
-       */
-      text?: string;
-
-      /**
-       * Lenke - `Url`
-       */
-      url?: string;
+      sources?: Array<Sanity.Keyed<Source>>;
     }
 
     /**
@@ -92,14 +74,9 @@ Nødvendig
       description?: string;
 
       /**
-       * Hovedmeny - `Reference`
+       * Hovedmeny - `RegistryReference`
        */
-      mainNav?: Sanity.Reference<Navigation>;
-
-      /**
-       * Undermeny - `Reference`
-       */
-      subNav?: Sanity.Reference<Navigation>;
+      mainNav?: Navigation;
 
       /**
        * Tekst i foten - `Array`
@@ -164,31 +141,6 @@ Om du ønsker å ha med teksten i tidslinjen, fyll ut informasjonen her
     }
 
     /**
-     * Navigering
-     */
-    interface Navigation extends Sanity.Document {
-      _type: "navigation";
-
-      /**
-       * Title - `String`
-       */
-      title?: string;
-
-      /**
-       * Navigation Id - `Slug`
-       */
-      navId?: {
-        _type: "navId";
-        current: string;
-      };
-
-      /**
-       * Navigation items - `Array`
-       */
-      items?: Array<Sanity.Keyed<NavigationItem>>;
-    }
-
-    /**
      * Album
      */
     interface Album extends Sanity.Document {
@@ -233,19 +185,6 @@ Nødvendig (for sortering)
 Nødvendig
        */
       name?: string;
-
-      /**
-       * Brukernavn - `Slug`
-       */
-      slug?: {
-        _type: "slug";
-        current: string;
-      };
-
-      /**
-       * Profil - `Array`
-       */
-      profile?: Array<Sanity.Keyed<Sanity.Block>>;
     }
 
     /**
@@ -267,70 +206,14 @@ Nødvendig (0 og oppover)
       order?: number;
 
       /**
-       * Slug - `Slug`
-       */
-      slug?: {
-        _type: "slug";
-        current: string;
-      };
-
-      /**
        * Beskrivelse - `Array`
        */
       description?: Array<Sanity.Keyed<Sanity.Block>>;
-    }
-
-    /**
-     * Gruppesammensetning
-     */
-    interface GroupConstellation extends Sanity.Document {
-      _type: "groupConstellation";
-
-      /**
-       * Gruppe - `Reference`
-Nødvendig
-       */
-      group?: Sanity.Reference<Group>;
-
-      /**
-       * År - `Date`
-Nødvendig
-       */
-      year?: string;
-
-      /**
-       * Semester - `String`
-Nødvendig
-       */
-      semester?: "vår" | "høst";
 
       /**
        * Medlemmer - `Array`
        */
-      members?: Array<Sanity.Keyed<Membership>>;
-    }
-
-    /**
-     * Æresmedlem
-     */
-    interface HonoraryMember extends Sanity.Document {
-      _type: "honoraryMember";
-
-      /**
-       * Person - `Reference`
-Nødvendig
-       */
-      person?: Sanity.Reference<Person>;
-
-      /**
-       * Dato - `Date`
-       */
-      date?: string;
-
-      /**
-       * Notat - `String`
-       */
-      note?: string;
+      members?: Array<Sanity.Keyed<Person>>;
     }
 
     type BlockContent = Array<
@@ -341,6 +224,21 @@ Nødvendig
           hotspot?: Sanity.ImageHotspot;
         }>
     >;
+
+    type Source = {
+      _type: "source";
+
+      /**
+       * Navn - `String`
+Nødvendig
+       */
+      text?: string;
+
+      /**
+       * Lenke - `Url`
+       */
+      url?: string;
+    };
 
     type PageEvent = {
       _type: "pageEvent";
@@ -480,6 +378,15 @@ Select pages for navigation
       navigationItemUrl?: Link;
     };
 
+    type Navigation = {
+      _type: "navigation";
+
+      /**
+       * Navigation items - `Array`
+       */
+      items?: Array<Sanity.Keyed<NavigationItem>>;
+    };
+
     type Photo = {
       _type: "photo";
 
@@ -546,16 +453,6 @@ Nødvendig
       note?: string;
     };
 
-    type Document =
-      | Event
-      | Source
-      | SiteSettings
-      | Page
-      | Navigation
-      | Album
-      | Person
-      | Group
-      | GroupConstellation
-      | HonoraryMember;
+    type Document = Event | SiteSettings | Page | Album | Person | Group;
   }
 }

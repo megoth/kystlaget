@@ -3,7 +3,7 @@ import Layout from "../../components/layout";
 import { getSiteSettings, SiteSettingsPage } from "../../lib/api/site-settings";
 import { getPage, PageQuery } from "../../lib/api/pages";
 import PageComponents from "../../components/page-components";
-import { pageSlugs } from '../../lib/pages';
+import { PAGE_SLUGS } from '../../lib/constants';
 
 interface Props extends SiteSettingsPage {
   page?: PageQuery;
@@ -20,7 +20,7 @@ export default function AboutPage({ siteSettings, page }: Props) {
 export async function getStaticProps({ preview = false }) {
   const [siteSettings, page] = await Promise.all([
     getSiteSettings(preview),
-    getPage(pageSlugs.ABOUT, preview),
+    getPage(PAGE_SLUGS.ABOUT, preview),
   ]);
   return {
     props: { siteSettings, page },

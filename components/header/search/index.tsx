@@ -1,9 +1,8 @@
-import { translations } from '../../../lib/translations';
 import Link from 'next/link';
-import { pageSlugs } from '../../../lib/pages';
 import { BiSearch } from 'react-icons/bi';
 import { searchStyle } from './styles.css';
 import clsx from 'clsx';
+import { PAGE_SLUGS, TRANSLATIONS } from '../../../lib/constants';
 
 interface HeaderSearchProps {
   className?: string;
@@ -11,9 +10,9 @@ interface HeaderSearchProps {
 
 export default function HeaderSearch({ className }: HeaderSearchProps) {
   return (
-    <Link href={`/${pageSlugs.SEARCH}`}>
+    <Link href={`/${PAGE_SLUGS.SEARCH}`}>
       <a className={clsx(searchStyle, className)}>
-        <span>{translations.SEARCH}</span>
+        <span>{TRANSLATIONS.SEARCH}</span>
         <BiSearch size={"2.3em"} />
       </a>
     </Link>

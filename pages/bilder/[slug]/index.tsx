@@ -12,8 +12,7 @@ import {
 import Loading from "../../../components/loading";
 import Album from "../../../components/album";
 import { getPage, PageQuery } from '../../../lib/api/pages';
-import { pageSlugs } from '../../../lib/pages';
-import { translations } from '../../../lib/translations';
+import { PAGE_SLUGS, TRANSLATIONS } from '../../../lib/constants';
 
 interface Props extends SiteSettingsPage {
   gallery: PageQuery;
@@ -26,7 +25,7 @@ export default function AlbumPage({ gallery, album, siteSettings }: Props) {
     return <ErrorPage statusCode={404}/>;
   }
   const crumbs = [
-    { href: `/${pageSlugs.GALLERY}`, text: gallery?.title || translations.GALLERY }
+    { href: `/${PAGE_SLUGS.GALLERY}`, text: gallery?.title || TRANSLATIONS.GALLERY }
   ]
   return (
     <Layout pageTitle={album.name} siteSettings={siteSettings} crumbs={crumbs}>
@@ -42,7 +41,7 @@ export const getStaticProps: GetStaticProps = async ({
   const [album, siteSettings, gallery] = await Promise.all([
     getAlbumWithImages(params!.slug, preview),
     getSiteSettings(preview),
-    getPage(pageSlugs.GALLERY, preview),
+    getPage(PAGE_SLUGS.GALLERY, preview),
   ]);
   return {
     props: {

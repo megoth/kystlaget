@@ -5,19 +5,17 @@ import { capitalizeFirst } from '../../lib/strings';
 
 interface Props {
   date: string | undefined;
-  semester?: string | undefined;
   format: string;
   postfix?: string;
   prefix?: string;
 }
 
-export default function DateFormat({ date, semester, format, postfix, prefix }: Props) {
-  if (!date && !semester) return null;
+export default function DateFormat({ date, format, postfix, prefix }: Props) {
+  if (!date) return null;
   return (
     <>
       {prefix}
       {date && formatFn(new Date(date), format, { locale: nb })}
-      {semester && capitalizeFirst(semester)}
       {postfix}
     </>
   );
