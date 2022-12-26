@@ -1,7 +1,5 @@
 import React from "react";
 import Link from "../link";
-import { navigationStyle } from "./styles.css";
-import cn from "classnames";
 import { LinkQuery } from '../../lib/api/site-settings';
 
 interface Props {
@@ -12,7 +10,7 @@ interface Props {
 
 export default function Navigation({ navItems, type, ariaLabel }: Props) {
   return (
-    <nav className={cn(navigationStyle, type)} aria-label={ariaLabel}>
+    <nav className={type} aria-label={ariaLabel}>
       <ul>
         {navItems?.map((item, index) => (
           <li key={`navigation-${type}-${index}`}>

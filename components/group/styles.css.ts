@@ -13,10 +13,3 @@ export const listStyle = style({
     },
   },
 });
-
-export const linkStyle = style({
-});
-
-export const imageStyle = style({
-  width: "100%",
-});

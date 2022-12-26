@@ -3,17 +3,19 @@ import { createTheme, globalStyle } from "@vanilla-extract/css";
 export const maxPageWidth = 800;
 export const thumbnailWidth = 256;
 export const thumbnailHeight = thumbnailWidth / 16 * 9;
+export const squareSize = 100;
 
 export const [themeClass, vars] = createTheme({
   borderRadius: {
     default: "4px",
   },
   color: {
-    base: "#212020",
+    base: "#f1efeb",
     black: "#000000",
     grey: "#666666",
     greyBackground: "#333333",
-    text: "#FFFFFF",
+    link: "#af1817",
+    text: "#0a0a0a",
     white: "#FFFFFF",
   },
   font: {
@@ -21,6 +23,7 @@ export const [themeClass, vars] = createTheme({
     title: "'Roboto Slab', serif",
   },
   fontSize: {
+    pageTitle: "3em",
     h1: "2rem",
     h2: "1.5rem",
     h3: "1.25rem",
@@ -64,7 +67,7 @@ globalStyle("body", {
 });
 
 globalStyle("a", {
-  color: vars.color.text,
+  color: vars.color.link,
 });
 
 globalStyle("em", {

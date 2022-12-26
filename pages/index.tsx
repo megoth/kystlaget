@@ -10,7 +10,7 @@ interface Props extends SiteSettingsPage {
 
 export default function Frontpage({ siteSettings, page }: Props) {
   return (
-    <Layout pageTitle={page?.title} siteSettings={siteSettings}>
+    <Layout siteSettings={siteSettings}>
       <PageComponents page={page} />
     </Layout>
   );

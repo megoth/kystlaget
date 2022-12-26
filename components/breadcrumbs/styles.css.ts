@@ -1,4 +1,5 @@
 import { style } from "@vanilla-extract/css";
+import { vars } from '../styles.css';
 
 export const listStyle = style({
   display: "flex",
@@ -25,5 +26,6 @@ export const caretInnerStyle = style({
 })
 
 export const linkStyle = style({
+  color: vars.color.text,
   flexGrow: 1,
 })

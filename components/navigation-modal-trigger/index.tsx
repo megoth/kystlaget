@@ -1,17 +1,17 @@
 import React, { MutableRefObject, useContext, useEffect } from 'react';
-import { headerHeight } from '../styles.css';
-import HeaderMenuButton from './button';
-import NavigationContext from '../../../contexts/navigationContext';
+import { headerHeight } from '../header/styles.css';
+import NavigationModalTriggerAnimation from './animation';
+import NavigationContext from '../../contexts/navigationContext';
 import { triggerStyle, triggerTextStyle } from './styles.css';
 import clsx from 'clsx';
-import { TRANSLATIONS } from '../../../lib/constants';
+import { TRANSLATIONS } from '../../lib/constants';
 
 export interface MenuProps {
   containerRef: MutableRefObject<HTMLDivElement>;
   className?: string;
 }
 
-export default function HeaderMenu({ containerRef, className }: MenuProps) {
+export default function NavigationModalTrigger({ containerRef, className }: MenuProps) {
   const { isOpen, setOpen } = useContext(NavigationContext);
 
   useEffect(() => {
@@ -36,7 +36,7 @@ export default function HeaderMenu({ containerRef, className }: MenuProps) {
       aria-expanded={isOpen}
     >
       <span className={triggerTextStyle}>{TRANSLATIONS.MENU}</span>
-      <HeaderMenuButton open={isOpen} />
+      <NavigationModalTriggerAnimation open={isOpen} />
     </button>
   )
 }

@@ -4,13 +4,18 @@ import { vars } from "../styles.css";
 export const headerHeight = 130;
 
 export const headerStyle = style({
-  alignItems: "center",
+  // alignItems: "center",
   background: vars.color.base,
-  display: "flex",
-  gap: "1em",
-  height: headerHeight,
+  color: vars.color.text,
+  display: "block",
+  fontSize: vars.fontSize.pageTitle,
+  fontFamily: vars.font.title,
+  // display: "flex",
+  // gap: "1em",
+  // height: headerHeight,
+  margin: "1rem 0",
   padding: 0,
-  justifyContent: "space-between",
+  // justifyContent: "space-between",
 });
 
 export const headerChildStyle = style({

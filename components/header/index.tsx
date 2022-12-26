@@ -1,25 +1,27 @@
 import React, { useRef } from "react";
-import Link from "../link";
-import { headerChildStyle, headerStyle, } from "./styles.css";
-import cn from "classnames";
-import Logo from "../logo";
+import { headerStyle, } from "./styles.css";
 import Container from "../container";
-import HeaderMenu from './menu';
+import NavigationMenu from '../navigation-menu';
+import { SiteSettingsQuery } from '../../lib/api/site-settings';
+import Link from 'next/link';
 
 interface Props {
   className?: string;
+  siteSettings: SiteSettingsQuery;
 }
 
-export default function Header({ className }: Props) {
+export default function Header({ className, siteSettings }: Props) {
   const ref = useRef<HTMLDivElement>(null);
 
   return (
     <Container ref={ref}>
-      <header className={cn(headerStyle, className)}>
-        <Link href={"/"} className={headerChildStyle}>
-          <Logo />
+      <header className={className}>
+        <Link href={"/"}>
+          <a className={headerStyle}>
+            {siteSettings.title}
+          </a>
         </Link>
-        <HeaderMenu containerRef={ref} className={headerChildStyle} />
+        <NavigationMenu siteSettings={siteSettings} />
       </header>
     </Container>
   );

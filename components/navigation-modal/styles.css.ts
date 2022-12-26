@@ -1,4 +1,4 @@
-import { style } from "@vanilla-extract/css";
+import { globalStyle, style } from "@vanilla-extract/css";
 import { vars } from "../styles.css";
 import { headerHeight } from "../header/styles.css";
 
@@ -39,4 +39,36 @@ export const modalInnerStyle = style({
       maxWidth: vars.pageWidth.large,
     },
   },
+});
+
+globalStyle(`${modalInnerStyle} ul`, {
+  display: "flex",
+  flexDirection: "column",
+  gap: "0.75rem",
+  "@media": {
+    "screen and (min-height: 400px)": {
+      gap: "1.25rem",
+    },
+  },
+});
+
+globalStyle(`${modalInnerStyle} .main-menu`, {
+  "@media": {
+    "screen and (min-height: 400px)": {
+      fontSize: 22,
+      marginBottom: "3em",
+    },
+  },
+});
+
+globalStyle(`${modalInnerStyle} .main-menu ul`, {
+  "@media": {
+    "screen and (min-height: 600px)": {
+      textAlign: "right",
+    },
+  },
+});
+
+globalStyle(`${modalInnerStyle} .sub-menu ul`, {
+  textAlign: "right",
 });

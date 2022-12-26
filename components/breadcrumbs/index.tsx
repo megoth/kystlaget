@@ -1,5 +1,4 @@
 import { RiArrowDropRightLine } from 'react-icons/ri';
-import Container from '../container';
 import Link from '../link';
 import { caretInnerStyle, caretStyle, linkStyle, listItemStyle, listStyle } from './styles.css';
 
@@ -13,14 +12,16 @@ interface BreadcrumbsProps {
 }
 
 export default function Breadcrumbs({ crumbs }: BreadcrumbsProps) {
-  return <ul className={listStyle}>
-    {crumbs.map(({ href, text }) => (
-      <li key={href} className={listItemStyle}>
+  return (
+    <ul className={listStyle}>
+      {crumbs.map(({ href, text }) => (
+        <li key={href} className={listItemStyle}>
         <span className={caretStyle}>
           <RiArrowDropRightLine className={caretInnerStyle}/>
         </span>
-        <Link href={href} className={linkStyle}>{text}</Link>
-      </li>
-    ))}
-  </ul>
+          <Link href={href} className={linkStyle}>{text}</Link>
+        </li>
+      ))}
+    </ul>
+  )
 }

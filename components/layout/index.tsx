@@ -26,7 +26,7 @@ export default function Layout({ children, pageTitle, siteSettings, crumbs }: Pr
       <div className={layoutStyle}>
         <Meta title={title} siteSettings={siteSettings}/>
         <div>
-          <Header/>
+          <Header siteSettings={siteSettings}/>
           <NavigationModal siteSettings={siteSettings}/>
           <main id={"content"}>
             {(pageTitle || crumbs?.length) && (
