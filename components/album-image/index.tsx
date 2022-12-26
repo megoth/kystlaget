@@ -25,10 +25,12 @@ interface AlbumImageProps {
 export default function AlbumImage({ album, photo }: AlbumImageProps) {
   const image = imageBuilder(photo.image);
   const photoIndex = album.images.map((image) => image._key).indexOf(photo._key);
+  const photoIsFirst = photoIndex === 0;
   const photoIsLast = photoIndex === album.images.length - 1;
   const albumPhotoLineStart = Math.max(photoIndex - (photoIsLast ? 2 : 1), 0);
   const photos = album.images.slice(albumPhotoLineStart, albumPhotoLineStart + 3);
-  const nextImageUrl = getPhotoUrl(album, photos[2] || photos[1] || photos[0]);
+  const nextImageUrl = photoIsLast ? `/${PAGE_SLUGS.GALLERY}/${album.slug}`
+    : getPhotoUrl(album, photoIsFirst ? photos[1] : photos[2]);
   return (
     <Container>
       <Link href={nextImageUrl}>
@@ -46,7 +48,7 @@ export default function AlbumImage({ album, photo }: AlbumImageProps) {
       ) : (
         <div aria-hidden={true} className={descriptionBlockStyle}>{photo.alt}</div>
       )}
-      <DownloadButton href={image.url()} postFix={"originalstørrelse"} />
+      <DownloadButton href={image.url()} postFix={"originalstørrelse"}/>
       {photos.length > 1 && (
         <>
           <h2 className={albumPhotosTitle}>Bilder i album</h2>
