@@ -1,5 +1,4 @@
 import { BsClock } from "react-icons/bs";
-import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 
 export default {
   name: "event",
@@ -14,40 +13,10 @@ export default {
       type: "string",
     },
     {
-      name: "short",
-      title: "Forkortelse",
-      type: "string",
-    },
-    {
-      name: "year",
-      title: "År",
-      description: "Nødvendig",
-      type: "date",
-      options: {
-        dateFormat: "YYYY",
-      },
-    },
-    {
       name: "date",
       title: "Dato",
-      description: "Hvis man vet nøyaktig dato",
-      type: "date",
-    },
-    {
-      name: "major",
-      title: "Stor hendelse",
-      type: "boolean",
-      initialValue: false,
-    },
-    {
-      name: "slug",
-      title: "Slug",
       description: "Nødvendig",
-      type: "slug",
-      options: {
-        source: "name",
-        maxLength: 96,
-      },
+      type: "date",
     },
     {
       name: "description",

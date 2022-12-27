@@ -826,32 +826,8 @@
           }
         },
         {
-          "name": "short",
-          "title": "Forkortelse",
-          "description": "",
-          "hidden": false,
-          "readOnly": false,
-          "codegen": {
-            "required": false
-          },
-          "hasValidation": false,
-          "definition": {
-            "codegen": {
-              "required": false
-            },
-            "description": null,
-            "hidden": false,
-            "name": "short",
-            "readOnly": false,
-            "title": "Forkortelse",
-            "hasValidation": false,
-            "type": "String",
-            "list": null
-          }
-        },
-        {
-          "name": "year",
-          "title": "År",
+          "name": "date",
+          "title": "Dato",
           "description": "Nødvendig",
           "hidden": false,
           "readOnly": false,
@@ -864,81 +840,12 @@
               "required": false
             },
             "description": "Nødvendig",
-            "hidden": false,
-            "name": "year",
-            "readOnly": false,
-            "title": "År",
-            "hasValidation": false,
-            "type": "Date"
-          }
-        },
-        {
-          "name": "date",
-          "title": "Dato",
-          "description": "Hvis man vet nøyaktig dato",
-          "hidden": false,
-          "readOnly": false,
-          "codegen": {
-            "required": false
-          },
-          "hasValidation": false,
-          "definition": {
-            "codegen": {
-              "required": false
-            },
-            "description": "Hvis man vet nøyaktig dato",
             "hidden": false,
             "name": "date",
             "readOnly": false,
             "title": "Dato",
             "hasValidation": false,
             "type": "Date"
-          }
-        },
-        {
-          "name": "major",
-          "title": "Stor hendelse",
-          "description": "",
-          "hidden": false,
-          "readOnly": false,
-          "codegen": {
-            "required": false
-          },
-          "hasValidation": false,
-          "definition": {
-            "codegen": {
-              "required": false
-            },
-            "description": null,
-            "hidden": false,
-            "name": "major",
-            "readOnly": false,
-            "title": "Stor hendelse",
-            "hasValidation": false,
-            "type": "Boolean"
-          }
-        },
-        {
-          "name": "slug",
-          "title": "Slug",
-          "description": "Nødvendig",
-          "hidden": false,
-          "readOnly": false,
-          "codegen": {
-            "required": false
-          },
-          "hasValidation": false,
-          "definition": {
-            "codegen": {
-              "required": false
-            },
-            "description": "Nødvendig",
-            "hidden": false,
-            "name": "slug",
-            "readOnly": false,
-            "title": "Slug",
-            "hasValidation": false,
-            "type": "Slug"
           }
         },
         {
@@ -1396,10 +1303,6 @@
             "hasValidation": false,
             "type": "String",
             "list": [
-              {
-                "title": "Albums",
-                "value": "albums"
-              },
               {
                 "title": "Events",
                 "value": "events"

@@ -8,6 +8,7 @@ interface Props {
 }
 
 export default function HistoryYearListItem({ event }: Props) {
+  console.log(event.sources);
   return (
     <li>
       <DateFormat date={event.date} format={"d. MMMM"} postfix={": "} />
@@ -15,6 +16,15 @@ export default function HistoryYearListItem({ event }: Props) {
         <Link href={event.href}>{event.name}</Link>
       ) : (
         <span>{event.name}</span>
+      )}
+      {event.sources && (
+        <>
+          <span> (</span>
+          {event.sources.map((source) => (
+            <Link href={source.url}>{source.text}</Link>
+          ))}
+          <span>)</span>
+        </>
       )}
     </li>
   );

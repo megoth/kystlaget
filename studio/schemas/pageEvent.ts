@@ -1,5 +1,4 @@
 import { BsClock } from "react-icons/bs";
-import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 
 export default {
   name: "pageEvent",
@@ -18,12 +17,6 @@ export default {
       title: "Dato",
       description: "Nødvendig om teksten skal vises i tidslinjen.",
       type: "date",
-    },
-    {
-      name: "major",
-      title: "Stor hendelse",
-      type: "boolean",
-      initialValue: false,
     },
   ],
 };

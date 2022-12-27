@@ -5,7 +5,7 @@ import DateFormat from "../date-format";
 
 interface Props {
   events: Array<EventForListQuery>;
-  year: string | number; // React parses it as number
+  year: string;
 }
 
 export default function HistoryYearEntry({ events, year, }: Props) {

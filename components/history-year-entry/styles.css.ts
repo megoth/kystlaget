@@ -5,12 +5,7 @@ export const yearTitleStyle = style({
 });
 
 export const yearContentStyle = style({
-  display: "none",
-  padding: "2em",
-});
-
-export const yearContentSelectedStyle = style({
-  display: "block",
+  padding: "1em 2em",
 });
 
 export const yearLinkStyle = style({

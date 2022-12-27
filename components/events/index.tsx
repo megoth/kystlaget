@@ -13,9 +13,7 @@ export default function Events({ events }: Props) {
   const eventYears = [
     ...getYearsFromEvents(events),
   ]
-    .map((date) => date.substring(0, 4))
     .filter(onlyUnique)
-    .sort()
     .reverse();
   return (
     <Container>
@@ -23,9 +21,7 @@ export default function Events({ events }: Props) {
         {eventYears.map((year) => (
           <li key={`year-${year}`}>
             <HistoryYearEntry
-              events={events.filter(
-                (event) => event.year.indexOf(year) !== -1
-              )}
+              events={events.filter((event) => event.year === year)}
               year={year}
             />
           </li>

@@ -201,35 +201,10 @@ Nødvendig
       name?: string;
 
       /**
-       * Forkortelse - `String`
-       */
-      short?: string;
-
-      /**
-       * År - `Date`
-Nødvendig
-       */
-      year?: string;
-
-      /**
        * Dato - `Date`
-Hvis man vet nøyaktig dato
+Nødvendig
        */
       date?: string;
-
-      /**
-       * Stor hendelse - `Boolean`
-       */
-      major?: boolean;
-
-      /**
-       * Slug - `Slug`
-Nødvendig
-       */
-      slug?: {
-        _type: "slug";
-        current: string;
-      };
 
       /**
        * Beskrivelse - `Array`
@@ -318,7 +293,7 @@ Nødvendig
        * Type - `String`
 Data må lenkes opp mot siden via kode
        */
-      type?: "albums" | "events" | "pageUpdates" | "subpages";
+      type?: "events" | "pageUpdates" | "subpages";
     };
 
     type GroupComponent = {
