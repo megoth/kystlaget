@@ -8,7 +8,6 @@ interface Props {
 }
 
 export default function HistoryYearListItem({ event }: Props) {
-  console.log(event.sources);
   return (
     <li>
       <DateFormat date={event.date} format={"d. MMMM"} postfix={": "} />
