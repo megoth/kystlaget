@@ -20,7 +20,7 @@ export default function HistoryYearListItem({ event }: Props) {
         <>
           <span> (</span>
           {event.sources.map((source) => (
-            <Link href={source.url}>{source.text}</Link>
+            <Link key={source.url} href={source.url}>{source.text}</Link>
           ))}
           <span>)</span>
         </>
