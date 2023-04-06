@@ -1,10 +1,10 @@
 import React from "react";
-import { EventForListQuery } from "../../../lib/api/history";
+import { HistoryEventForListQuery } from "../../../lib/api/history";
 import DateFormat from "../../date-format";
 import Link from "../../link";
 
 interface Props {
-  event: EventForListQuery;
+  event: HistoryEventForListQuery;
 }
 
 export default function HistoryYearListItem({ event }: Props) {

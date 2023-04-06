@@ -2,7 +2,7 @@ import { SchemaTypeDefinition } from '@sanity/types';
 
 import blockContent from "./blockContent";
 import source from "./source";
-import event from "./event";
+import historyEvent from "./historyEvent";
 import siteSettings from "./siteSettings";
 import page from "./page";
 import albumsComponent from "./albumsComponent";
@@ -54,7 +54,7 @@ export const schemaTypes: Array<SchemaTypeDefinition> = [
   person,
   company,
   membership, // TODO fix preview
-  event, // TODO fix preview
+  historyEvent, // TODO fix preview
   source, // TODO fix preview
 ];
 

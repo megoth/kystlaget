@@ -1,10 +1,10 @@
-import { EventForListQuery } from "../../lib/api/history";
+import { HistoryEventForListQuery } from "../../lib/api/history";
 import { yearContentStyle, yearListStyle, yearTitleStyle, } from "./styles.css";
 import HistoryYearListItem from "./history-year-list-item";
 import DateFormat from "../date-format";
 
 interface Props {
-  events: Array<EventForListQuery>;
+  events: Array<HistoryEventForListQuery>;
   year: string;
 }
 

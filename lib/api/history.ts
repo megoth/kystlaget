@@ -2,7 +2,7 @@ import { getClient } from "../sanity";
 import { PAGE_SLUGS } from '../constants';
 import { AlbumImageQuery } from './gallery';
 
-export interface EventForListQuery
+export interface HistoryEventForListQuery
   extends Omit<Sanity.Schema.Event, "sources"> {
   href?: string
   year: string
@@ -12,9 +12,9 @@ export interface EventForListQuery
 
 export async function getAllEventsForHistoryPage(
   preview: boolean
-): Promise<Array<EventForListQuery>> {
+): Promise<Array<HistoryEventForListQuery>> {
   const [events, albums, pages] = await Promise.all([
-    getClient(preview).fetch(`*[ _type == "event" ] | order(date asc){
+    getClient(preview).fetch(`*[ _type == "historyEvent" ] | order(date asc){
     _id,
     name,
     date,
@@ -28,12 +28,12 @@ export async function getAllEventsForHistoryPage(
     date,
     'images': images[],
   }`),
-    getClient(preview).fetch(`*[ _type == "page" && defined(event.date) ] | order(date asc){
+    getClient(preview).fetch(`*[ _type == "page" && defined(historyEvent.date) ] | order(date asc){
     _id,
     name,
     'slug': slug.current,
     'parentSlug': parent.page->slug.current,
-    'date': event.date,
+    'date': historyEvent.date,
   }`),
   ]);
   return [
@@ -55,6 +55,6 @@ export async function getAllEventsForHistoryPage(
     .sort((a, b) => (new Date(a.date)).getTime() - (new Date(b.date)).getTime());
 }
 
-export function getYearsFromEvents(events: Array<EventForListQuery>): string[] {
+export function getYearsFromEvents(events: Array<HistoryEventForListQuery>): string[] {
   return events.map(({ year }) => year);
 }

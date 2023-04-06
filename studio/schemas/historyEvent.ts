@@ -1,7 +1,7 @@
 import { BsClock } from "react-icons/bs";
 
 export default {
-  name: "event",
+  name: "historyEvent",
   title: "Historie",
   type: "document",
   icon: BsClock,

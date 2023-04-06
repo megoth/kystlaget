@@ -1,4 +1,4 @@
-import { EventForListQuery } from "./history";
+import { HistoryEventForListQuery } from "./history";
 import { PageUpdateQuery } from "./page-updates";
 import { SubpageQuery } from './pages';
 
@@ -7,13 +7,13 @@ import { SubpageQuery } from './pages';
 // Also update /components/data-component.tsx
 
 export const dataModules = [
-  "events",
+  "historyEvents",
   "pageUpdates",
   "subpages"
 ];
 
 export interface DataModules {
-  events?: Array<EventForListQuery>;
+  historyEvents?: Array<HistoryEventForListQuery>;
   pageUpdates?: Array<PageUpdateQuery>;
   subpages?: Array<SubpageQuery>;
 }

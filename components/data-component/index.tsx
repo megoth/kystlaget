@@ -1,13 +1,13 @@
 import React from "react";
 import { ComponentProps } from "../page-components";
-import Events from "../events";
+import HistoryEvents from "../history-events";
 import { DataModules } from "../../lib/api/data-modules";
 import PageUpdates from "../page-updates";
 import Subpages from '../subpages';
 import { PageQuery } from '../../lib/api/pages';
 
 const dataComponents: { [KEY in keyof DataModules]: Function } = {
-  events: Events,
+  historyEvents: HistoryEvents,
   pageUpdates: PageUpdates,
   subpages: Subpages
 };

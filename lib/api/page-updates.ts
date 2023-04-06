@@ -33,7 +33,7 @@ export async function getEventUpdates(
 ): Promise<Array<PageUpdateQuery>> {
   return getClient(preview)
     .fetch(
-      `*[_type == "event"]{
+      `*[_type == "historyEvent"]{
         'created': _createdAt,
         name,
         'slug': slug.current

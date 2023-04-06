@@ -1,15 +1,15 @@
 import React from "react";
-import { EventForListQuery, getYearsFromEvents } from "../../lib/api/history";
+import { HistoryEventForListQuery, getYearsFromEvents } from "../../lib/api/history";
 import HistoryYearEntry from "../history-year-entry";
 import Container from "../container";
 import { onlyUnique } from "../../lib/utils";
 import { listStyle } from "./styles.css";
 
 interface Props {
-  events: Array<EventForListQuery>;
+  events: Array<HistoryEventForListQuery>;
 }
 
-export default function Events({ events }: Props) {
+export default function HistoryEvents({ events }: Props) {
   const eventYears = [
     ...getYearsFromEvents(events),
   ]

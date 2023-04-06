@@ -1,16 +1,16 @@
 import React from "react";
 import Layout from "../../components/layout";
 import {
-  EventForListQuery,
+  HistoryEventForListQuery,
   getAllEventsForHistoryPage,
 } from "../../lib/api/history";
 import { getSiteSettings, SiteSettingsPage } from "../../lib/api/site-settings";
 import { getPage, PageQuery } from "../../lib/api/pages";
-import Events from '../../components/events';
+import HistoryEvents from '../../components/history-events';
 import { PAGE_SLUGS } from '../../lib/constants';
 
 interface Props extends SiteSettingsPage {
-  allEvents?: Array<EventForListQuery>;
+  allEvents?: Array<HistoryEventForListQuery>;
   page?: PageQuery;
 }
 
@@ -21,7 +21,7 @@ export default function AllPeoplePage({
 }: Props) {
   return (
     <Layout pageTitle={page?.title} siteSettings={siteSettings}>
-      <Events events={allEvents} />
+      <HistoryEvents events={allEvents} />
     </Layout>
   );
 }
