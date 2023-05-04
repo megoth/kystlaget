@@ -10,7 +10,7 @@ interface GroupComponentProps extends ComponentProps {
 export default function GroupComponent({ component }: GroupComponentProps) {
   return (
     <Container>
-      <Group group={component.group} />
+      <Group key={component.group._id} group={component.group} />
     </Container>
   )
 }
